@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO Score Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body style="background-color: #f8f9fa;">
+    <div class="container">
+        <h1 style="color: #3ed510;">Enter Register Number</h1>
+        <form id="register-form" action="/po_scores" method="post">
+            <label for="regno" style="color: #930dc8;">Register Number:</label>
+            <input type="text" id="regno" name="regno" required style="background-color: #ffffff; color: #333; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+            <button type="submit" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;">Submit</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO Scores</title>
+    <style>
+        body {
+            background-image: url("static/background2.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-top: 50px; /* Adjust as needed */
+        }
+        /* Define colors for headings */
+        .heading1 {
+            color: blue; /* Change color as needed */
+        }
+        .heading2 {
+            color: green; /* Change color as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading1">PO Scores for Register Number {{ regno }}</h1>
+        <div class="po-scores">
+            <h2 class="heading2">PO Scores:</h2>
+            <ul>
+                {% for po, score in po_scores.items() %}
+                    <li>
+                        <strong>{{ po }}:</strong> {{ "%.1f"|format(score) }}
+                        {% if score < 1.5 %}
+                            <span style="color: red;">-  Acceptable with Prospects for Advancement</span>
+                        {% elif score < 2.5 %}
+                            <span style="color: orange;">-  Praiseworthy with Opportunities for Enhancement</span>
+                        {% elif score >= 2.5 %}
+                            <span style="color: green;">-  Exceptional</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="po-descriptions">
+            <h2 class="heading2">PO Descriptions:</h2>
+            <table>
+                <tr>
+                    <th>PO Number</th>
+                    <th>Description</th>
+                </tr>
+                {% for po, description in po_descriptions.items() %}
+                    <tr>
+                        <td>{{ po }}</td>
+                        <td>{{ description }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="/" style="text-decoration: none; color: #007bff;">Back to Home</a>
+    </div>
+</body>
+</html>
